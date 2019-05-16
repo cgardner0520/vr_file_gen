@@ -1,0 +1,14 @@
+{
+  "name": "input_file_gen",
+  "version": "1.0.0",
+  "description": "A program to generate both config files and input files for the VR experiment framework developed for the DeLucia Lab at Rice University",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Courtney Gardner",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^5.0.1"
+  }
+}
