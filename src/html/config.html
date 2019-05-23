@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- MATERIAL ICONS-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- jQuery first, then jQuery min.js, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <!-- Custom Stylesheets -->
+    <link href="../assets/css/index.css" rel="stylesheet">
+    <link href="../assets/css/config.css" rel="stylesheet">
+
+    <!-- Custom Scripts -->
+    <script src="../js/config.js"></script>
+
+    <title>VR File Generator</title>
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <nav class="nav nav-masthead justfiy-content-center mx-auto">
+            <a class="nav-link" href="./index.html">Back</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <div class="container">
+          <div class="py-5 text-center">
+            <h2>Config File Generator</h2>
+            <p class="lead">
+              Enter the correct experiment-wide parameters to create a configuration file that is appropriately-formatted for use with the VR experiment framework.
+            </p>
+          </div>
+
+          <form id="configForm">
+            <hr class="mb-4 mt-4">
+
+
+            <h4>Subject Information</h4>
+            <div class="form-group text-left">
+              <label for="subjNum" class="font-weight-bold">Subject Number</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Testing tooltips" style="font-size:15px;">help_outline</i>
+              <div class="row col-md-2">
+                <input type="number" class="form-control" id="subjNum" placeholder="1" value="1">
+              </div>
+            </div>
+
+            <div class="form-group text-left">
+              <label for="subjSex" class="font-weight-bold">Subject Sex</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="subj-sex-radios" id="male-radio" value="male-radio">
+                <label class="form-check-label" for="male-radio">0 - Male</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="subj-sex-radios" id="female-radio" value="female-radio">
+                <label class="form-check-label" for="female-radio">1 - Female</label>
+              </div>
+            </div>
+
+
+            <hr class="mb-4 mt-4">
+
+
+            <h4>Trial Input</h4>
+            <div class="form-group text-left">
+              <label for="dataFile" class="font-weight-bold">Trial Data File</label>
+              <div class="row input-group col-md-8">
+                <input type="text" class="form-control" id="dataFile" placeholder="input_file" aria-describedby="json-addon">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="json-addon">.json</span>
+                </div>
+              </div>
+            </div>
+
+
+            <hr class="mb-4 mt-4">
+
+
+            <h4 class="mb-4">Camera and Object Positioning</h4>
+            <div class="form-group text-left" id="initCamPos">
+              <label for="initCamPos" class="font-weight-bold">Initial VIVE Camera Position</label>
+              <div class="form-group form-row" id="initCamPos">
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">X:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="camX" placeholder="0" value="0.000">
+                </div>
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Y:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="camY" placeholder="0" value="0.000">
+                </div>
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Z:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="camZ" placeholder="0" value="0.000">
+                </div>
+              </div>
+            </div>
+            <div class="form-group text-left">
+              <label for="objMoveMode" class="font-weight-bold">Object Move Mode</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="obj-move-radios" id="obj-move-0-radio" value="0">
+                <label class="form-check-label" for="obj-move-0-radio">0 - Object stops moving at the initial position of the VIVE Camera</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="obj-move-radios" id="obj-move-1-radio" value="1">
+                <label class="form-check-label" for="obj-move-1-radio">1 - Object stops moving at the specified final position for each trial</label>
+              </div>
+            </div>
+            <div class="form-group text-left">
+              <label for="offsetObj" class="font-weight-bold">Offset Object</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="offset-obj-radios" id="offset-obj-true" value="offset-obj-true">
+                <label class="form-check-label" for="offset-obj-true">True</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="offset-obj-radios" id="offset-obj-false" value="offset-obj-false">
+                <label class="form-check-label" for="offset-obj-false">False</label>
+              </div>
+            </div>
+
+
+            <hr class="mb-4 mt-4">
+
+
+            <h4 class="mb-4">Data Collection</h4>
+            <div class="form-group text-left">
+              <label for="headPosData" class="font-weight-bold">Collect Head Position Data</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="head-pos-radios" id="yes-head-pos-radio" value="yes-head-pos-radio">
+                <label class="form-check-label" for="yes-head-pos-radio">True</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="head-pos-radios" id="no-head-pos-radio" value="no-head-pos-radio">
+                <label class="form-check-label" for="no-head-pos-radio">False</label>
+              </div>
+            </div>
+
+
+            <hr class="mb-4 mt-4">
+
+
+            <h4 class="mb-4">Feedback</h4>
+            <div class="form-group text-left">
+              <label for="headPosData" class="font-weight-bold">Display Feedback</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="show-feedback-radios" id="yes-feedback-radio" value=
+              "yes-feedback-radio">
+                <label class="form-check-label" for="yes-feedback-radio">True</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="show-feedback-radios" id="no-feedback-radio" value="no-feedback-radio">
+                <label class="form-check-label" for="no-feedback-radio">False</label>
+              </div>
+            </div>
+            <div class="form-group text-left">
+              <label for="feedbackColor" class="font-weight-bold">Feedback Color</label>
+              <div class="row col-md-3">
+                <select class="form-control" id="feedbackColor">
+                  <option>Black</option>
+                  <option>Blue</option>
+                  <option>Cyan</option>
+                  <option>Gray</option>
+                  <option>Green</option>
+                  <option>Magenta</option>
+                  <option>Red</option>
+                  <option>White</option>
+                  <option>Yellow</option>
+                  <option>Clear</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group text-left">
+              <label for="feedbackSize" class="font-weight-bold">Feedback Size</label>
+              <div class="row col-md-3">
+                <input type="number" class="form-control" id="feedbackSize" placeholder="75" step="0.01" value="75">
+              </div>
+            </div>
+            <div class="form-group text-left">
+              <label for="feedbackPos" class="font-weight-bold">Feedback Canvas Position</label>
+              <div class="form-group form-row" id="feedbackPos">
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">X:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="feedbackX" placeholder="0" value="0.000">
+                </div>
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Y:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="feedbackY" placeholder="0" value="0.000">
+                </div>
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Z:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="feedbackZ" placeholder="0" value="0.000">
+                </div>
+              </div>
+            </div>
+
+
+            <hr class="mb-4 mt-4">
+
+
+            <div class="form-group">
+              <button name="data" class="btn btn-lg btn-secondary" type="button" onclick="createConfig()">Create Config File</button>
+            </div>
+          </form>
+      </main>
+
+      <footer class="mastfoot mt-auto"></footer>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
