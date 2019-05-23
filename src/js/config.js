@@ -99,10 +99,12 @@ function writeJsonData(jsonData) {
 	// Save the file as "config.json" in the application's user data folder 
 	var filepath = path.join(app.getPath('userData'), "config.json");
 
+	alert('filepath:\n' + filepath);
+
 	fs.writeFileSync(filepath, jsonData, function(err) {
 		if (err) {
 			console.log(err);
-			alert("ERROR: Could not save config.json file");
+			alert(`ERROR: Could not save config.json file to ${filepath}`);
 		}
 	})
 }
