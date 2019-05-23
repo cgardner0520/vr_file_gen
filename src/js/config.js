@@ -1,7 +1,7 @@
 function createConfig() {
 	// subjNum
 	var subjNum = parseInt($('#subjNum').val());
-	
+
 	// subjSex
 	var subjSexRadio = $('input[name=subj-sex-radios]:checked').val();
 	if (subjSexRadio == 'female-radio') {
@@ -20,10 +20,18 @@ function createConfig() {
 
 	// objMoveMode
 	var objMoveModeRadio = $('input[name=obj-move-radios]:checked').val();
-	if (objMoveModeRadio == 0) {		
+	if (objMoveModeRadio == 0) {
 		var objMoveMode = 0;
 	} else {
 		var objMoveMode = 1;
+	}
+
+	// offsetObj
+	var offsetObjRadio = $('input[name=offset-obj-radios]:checked').val();
+	if (offsetObjRadio == 'offset-obj-true') {
+		var offsetObj = true;
+	} else {
+		var offsetObj = false;
 	}
 
 	// trackHeadPos
@@ -49,58 +57,60 @@ function createConfig() {
 	var feedbackSize = parseFloat($('#feedbackSize').val());
 
 	// canvasPos
-	var canvasX = parseFloat($('#feedbackX').val());
-	var canvasY = parseFloat($('#feedbackY').val());
-	var canvasZ = parseFloat($('#feedbackZ').val());
+	var canvasPosX = parseFloat($('#feedbackX').val());
+	var canvasPosY = parseFloat($('#feedbackY').val());
+	var canvasPosZ = parseFloat($('#feedbackZ').val());
 
+	// Create a dictionary to hold the config data
 	var data = {
 		subjNum: subjNum,
 		subjSex: subjSex,
 		dataFile: dataFile,
 		initCameraPos: [initCameraX, initCameraY, initCameraZ],
 		objMoveMode: objMoveMode,
+		offsetObj: offsetObj,
 		trackHeadPos: trackHeadPos,
 		showFeedback: showFeedback,
 		feedbackColor: feedbackColor,
 		feedbackSize: feedbackSize,
-		canvasPos: [canvasX, canvasY, canvasZ]
+		canvasPos: [canvasPosX, canvasPosY, canvasPosZ]
 	};
 
+	// Convert the data to JSON
 	var jsonData = JSON.stringify(data, null, 4);
 
-	// write json data to a file
+	// Write the JSON data to a file
 	writeJsonData(jsonData);
 
-	// point the window at the success page
-	window.location = "./config_success.html";
+	// Point the window to a success page
+	// window.location = "../html/config_success.html"
 }
 
 
 function writeJsonData(jsonData) {
+	// Require the file system library functions
 	var fs = require('fs');
 
+	// Get a remote reference to the application to find the filepath
 	const remote = require('electron').remote;
 	const app = remote.app;
 	var path = require('path');
+
+	// Save the file as "config.json" in the application's user data folder 
 	var filepath = path.join(app.getPath('userData'), "config.json");
 
-	// TODO: make this non-synchronous ?
 	fs.writeFileSync(filepath, jsonData, function(err) {
 		if (err) {
 			console.log(err);
+			alert("ERROR: Could not save config.json file");
 		}
-	});
+	})
 }
 
 
-$(document).ready(function (){
-	// add tooltips
+$(document).ready(function() {
+	// Add tooltips
 	$('[data-toggle="tooltip"]').tooltip({
-		container : 'body'
+		container: 'body'
 	});
-
-	// const remote = require('electron').remote;
-	// const app = remote.app;
-	// alert("HEYO: " + app.getPath('userData'));
 });
-
