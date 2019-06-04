@@ -7,6 +7,7 @@ function initScene() {
 	localStorage.setItem("sceneName", sceneName);
 	localStorage.setItem("numObjs", numObjs);
 	localStorage.setItem("objsCreated", 0);
+	localStorage.setItem("objects", "[]");
 
 	window.location = "../html/create_scene.html";
 }
