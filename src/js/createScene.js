@@ -12,8 +12,6 @@ function getGlobalVars() {
 	sceneName = localStorage.getItem("sceneName");
 	numObjs = parseInt(localStorage.getItem("numObjs"));
 	objects = JSON.parse(localStorage.getItem("objects"));
-	alert("HERE");
-	alert("OBJECTS:\n" + objects);
 }
 
 
@@ -64,37 +62,28 @@ function addObj() {
 
 	objsCreated += 1;
 	objects.push(newObj);
-	alert("NEW OBJECTS:\n" + objects);
 	localStorage.setItem("objects", JSON.stringify(objects));
 	localStorage.setItem("objsCreated", objsCreated.toString());
 
 	// Save the scene once all objects have been added
 	if (objsCreated == numObjs) {
-		alert("All objects created");
-
 		var newScene = {
 			sceneName: sceneName,
 			objects: objects
 		};
 
-		alert('objs:\n' + newScene['objects']);
-
 		scenes.insert(newScene, function(err, doc) {
 			console.log('Inserted', doc.name, 'with ID', doc._id);
 		});
-		alert("Inserted doc in database?");
-		scenes.find({}, function(err, docs) {
-			temp = "";
-			for (i = 0; i < docs.length; i++) {
-				temp += JSON.parse(docs[i].objects);
-				temp += " ";
-			}
-			alert("END OF DOCS:\n" + temp);
-		});
-		window.location = "./index.html"
+		// scenes.find({}, function(err, docs) {
+		// 	temp = "";
+		// 	for (i = 0; i < docs.length; i++) {
+		// 		temp += JSON.parse(docs[i].objects);
+		// 		temp += " ";
+		// 	}
+		// });
+		window.location = "./new_scene_success.html"
 	} else {
-		alert('here ?');
-		alert("objsCreated: " + objsCreated + "\nnumObjs: " + numObjs);
 		window.location = "./create_scene.html";
 	}
 }
