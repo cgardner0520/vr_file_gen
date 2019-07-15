@@ -15,7 +15,10 @@ function chooseScene(sceneNum) {
 	scenes.find({}, function(err, docs) {
 		for (i = 0; i < docs.length; i++) {
 			if (i === sceneNum) {
-				selectedScenes.append('<p>' + docs[sceneNum].sceneName + '<p>');
+				// selectedScenes.append('<p>' + docs[sceneNum].sceneName + '<p>');
+				selectedScenes.append('<li class="list-group-item" style="background-color: #333; color: white;">' + docs[sceneNum].sceneName + '</li>');
+
+				// <li class="list-group-item" style="background-color: #333; color: white;">Thing?</li>
 				
 				// add the scene to the global scene list
 				sceneList = JSON.parse(localStorage.getItem("sceneList"));
@@ -32,12 +35,11 @@ function loadScenes() {
 		// create a button for all existing scenes
 		for (i = 0; i < docs.length; i++) {
 			// alert(docs[i].sceneName);
-			var existingScenes = $('#existingScenes');
-			// existingScenes.append('<h2>Scene ' + (i + 1) + ': ' + docs[i].sceneName + '</h2>');
-		
+			// var existingScenes = $('#existingScenes');
 			// existingScenes.append('<p><button name="scene' + docs[i].sceneName + '" class="btn btn-secondary" type="button" onclick="chooseScene(' + i + ')">' + docs[i].sceneName + '</button></p>');
 
-			existingScenes.append('<p><button name="scene' + docs[i].sceneName + '" class="btn btn-secondary" type="button" onclick="chooseScene(' + i + ')">' + docs[i].sceneName + '</button></p>');
+			var availableScenes = $('#availableScenes');
+			availableScenes.append('<button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;" onclick="chooseScene(' + i + ')">' + docs[i].sceneName + '</button>');
 
 		}		
 	});
