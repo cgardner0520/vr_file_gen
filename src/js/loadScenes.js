@@ -27,21 +27,40 @@ function chooseScene(sceneNum) {
 			}
 		}
 	});
+
+	// scenes.find({sceneNum: sceneNum.toString()}).exec(function(err, docs) {
+	// 	selectedScenes.append('<li class="list-group-item" style="background-color: #333; color: white;">' + docs[sceneNum].sceneName + '</li>');
+	// 	sceneList = JSON.parse(localStorage.getItem("sceneList"));
+	// 	sceneList.push(JSON.stringify(docs[sceneNum]));
+	// 	localStorage.setItem("sceneList", JSON.stringify(sceneList));
+	// });
 	
 }
 
 function loadScenes() {
-	scenes.find({}, function(err, docs) {
-		// create a button for all existing scenes
-		for (i = 0; i < docs.length; i++) {
-			// alert(docs[i].sceneName);
-			// var existingScenes = $('#existingScenes');
-			// existingScenes.append('<p><button name="scene' + docs[i].sceneName + '" class="btn btn-secondary" type="button" onclick="chooseScene(' + i + ')">' + docs[i].sceneName + '</button></p>');
+	// scenes.find({}, function(err, docs) {
+	// 	// create a button for all existing scenes
+	// 	for (i = 0; i < docs.length; i++) {
+	// 	// for (i = (docs.length - 1); i >= 0; i--) {
+	// 		// alert(docs[i].sceneName);
+	// 		// var existingScenes = $('#existingScenes');
+	// 		// existingScenes.append('<p><button name="scene' + docs[i].sceneName + '" class="btn btn-secondary" type="button" onclick="chooseScene(' + i + ')">' + docs[i].sceneName + '</button></p>');
 
-			var availableScenes = $('#availableScenes');
-			availableScenes.append('<button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;" onclick="chooseScene(' + i + ')">' + docs[i].sceneName + '</button>');
+	// 		var availableScenes = $('#availableScenes');
+	// 		availableScenes.append('<button type="button" class="list-group-item list-group-item-action btn-select" style="background-color: #333; color: white;" onclick="chooseScene(' + i + ')">' + docs[i].sceneName + '</button>');
 
-		}		
+	// 	}		
+	// });
+
+
+
+	var availableScenes = $('#availableScenes');
+
+	scenes.find({}).sort({sceneNum: 1}).exec(function(err, docs) {
+		// for (i = 0; i < docs.length; i++) {
+		for (i = (docs.length - 1); i >= 0; i--) {
+			availableScenes.append('<button type="button" class="list-group-item list-group-item-action btn-select" style="background-color: #333; color: white;" onclick="chooseScene(' + i + ')">' + docs[i].sceneName + '</button>');
+		}
 	});
 
 	// create/store the initial empty scene list

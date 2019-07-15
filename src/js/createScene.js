@@ -68,6 +68,7 @@ function addObj() {
 	// Save the scene once all objects have been added
 	if (objsCreated == numObjs) {
 		var newScene = {
+			sceneNum: (objsCreated - 1),
 			sceneName: sceneName,
 			objects: objects
 		};
