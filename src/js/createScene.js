@@ -75,13 +75,6 @@ function addObj() {
 		scenes.insert(newScene, function(err, doc) {
 			console.log('Inserted', doc.name, 'with ID', doc._id);
 		});
-		// scenes.find({}, function(err, docs) {
-		// 	temp = "";
-		// 	for (i = 0; i < docs.length; i++) {
-		// 		temp += JSON.parse(docs[i].objects);
-		// 		temp += " ";
-		// 	}
-		// });
 		window.location = "./new_scene_success.html"
 	} else {
 		window.location = "./create_scene.html";
