@@ -4,6 +4,7 @@ var sceneName;
 var numObjs;
 var objs;
 
+
 // Import the database
 var scenes = require('../js/db.js');
 
@@ -65,10 +66,14 @@ function addObj() {
 	localStorage.setItem("objects", JSON.stringify(objects));
 	localStorage.setItem("objsCreated", objsCreated.toString());
 
-	// Save the scene once all objects have been added
+	var sceneNum = parseInt(localStorage.getItem("numScenes"));
+	// alert('sceneNum is ' + sceneNum);
+	// alert('pls ' + localStorage.getItem("sceneNum"));
+
+
 	if (objsCreated == numObjs) {
 		var newScene = {
-			sceneNum: (objsCreated - 1),
+			sceneNum: sceneNum,
 			sceneName: sceneName,
 			objects: objects
 		};
@@ -80,11 +85,30 @@ function addObj() {
 	} else {
 		window.location = "./create_scene.html";
 	}
+
+
+
+	// Save the scene once all objects have been added
+	// if (objsCreated == numObjs) {
+	// 	var newScene = {
+	// 		sceneNum: sceneNum,
+	// 		sceneName: sceneName,
+	// 		objects: objects
+	// 	};
+
+	// 	scenes.insert(newScene, function(err, doc) {
+	// 		console.log('Inserted', doc.name, 'with ID', doc._id);
+	// 	});
+	// 	window.location = "./new_scene_success.html"
+	// } else {
+	// 	window.location = "./create_scene.html";
+	// }
 }
 
 
 $(document).ready(function() {
 	getGlobalVars();
+
 	var objCreationHeader = $('#objCreationHeader');
 	objCreationHeader.append('<h2>Object ' + (objsCreated + 1) + ' </h2>');
 })
