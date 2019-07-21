@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- jQuery first, then jQuery min.js, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  <!-- include custom stylesheet -->
+  <link href="../assets/css/index.css" rel="stylesheet">
+
+  <!-- Include Custom Scripts -->
+  <script src="../js/createScene.js"></script>
+
+  <title>VR File Generator</title>
+</head>
+<body class="text-center">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <!-- no actual header, but need it for spacing? -->
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <nav class="nav nav-masthead justfiy-content-center mx-auto">
+            <a class="nav-link" href="./index.html">Back</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <div class="container">
+            <!-- <h2>Create Scene</h2> -->
+          <div id="objCreationHeader" class="py-5 text-center"></div>
+
+          <form id="createSceneForm">
+            <hr class="mb-4 mt-4">
+
+            <h4>Object Parameters</h4>
+
+            <div class="form-group text-left">
+              <label for="objType" class="font-weight-bold">Object Type</label>
+              <div class="row col-md-3">
+                <select class="form-control" id="objType">
+                  <option>Sphere</option>
+                  <option>Cube</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group text-left">
+              <label for="objScale" class="font-weight-bold">Object Scale</label>
+              <div class="form-group form-row" id="objScale">
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">X:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="objScaleX" placeholder="0" value="0.000">
+                </div>
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Y:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="objScaleY" placeholder="0" value="0.000">
+                </div>
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Z:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="objScaleZ" placeholder="0" value="0.000">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group text-left">
+              <label for="objScale" class="font-weight-bold">Object Starting Position</label>
+              <div class="form-group form-row" id="objScale">
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">X:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="objStartX" placeholder="0" value="0.000">
+                </div>
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Y:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="objStartY" placeholder="0" value="0.000">
+                </div>
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Z:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="objStartZ" placeholder="0" value="0.000">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group text-left">
+              <label for="objScale" class="font-weight-bold">Object Ending Position</label>
+              <div class="form-group form-row" id="objScale">
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">X:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="objEndX" placeholder="0" value="0.000">
+                </div>
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Y:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="objEndY" placeholder="0" value="0.000">
+                </div>
+                <div class="input-group col-md-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Z:</div>
+                  </div>
+                  <input type="number" step="0.001" class="form-control" id="objEndZ" placeholder="0" value="0.000">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group text-left">
+              <label for="velocity" class="font-weight-bold">Object Velocity</label>
+              <div class="row input-group col-md-4">
+                <input type="number" class="form-control" id="velocity" placeholder="0" step="0.001" value="0" aria-describedby="vel-addon">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="vel-addon">m/s</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group text-left">
+              <label for="timeVisible" class="font-weight-bold">Time Visible</label>
+              <div class="row input-group col-md-5">
+                <input type="number" class="form-control" id="timeVisible" placeholder="0" step="0.001" value="0" aria-describedby="vel-addon">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="vel-addon">seconds</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group text-left">
+              <label for="rotation" class="font-weight-bold">Rate of Rotation</label>
+              <div class="row input-group col-md-4">
+                <input type="number" class="form-control" id="rotation" placeholder="0" step="0.001" value="0" aria-describedby="vel-addon">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="vel-addon">m/s</span>
+                </div>
+              </div>
+            </div>
+
+            <hr class="mb-4 mt-4">
+
+            <div class="form-group">
+              <button name="data" class="btn btn-lg btn-secondary" type="button" onclick="addObj()">Add Object</button>
+            </div>
+          </form>
+        </div>
+      </main>
+
+      <!-- no actual footer but need for spacing? -->
+      <footer class="mastfoot mt-auto">
+      </footer>
+    </div>
+</body>
+</html>

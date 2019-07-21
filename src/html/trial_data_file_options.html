@@ -15,17 +15,22 @@
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <!-- no actual header, but need it for spacing? -->
       <header class="masthead mb-auto">
-      </header> 
+        <div class="inner">
+          <nav class="nav nav-masthead justfiy-content-center mx-auto">
+            <a class="nav-link" href="./index.html">Back</a>
+          </nav>
+        </div>
+      </header>
 
       <main role="main" class="inner cover">
-        <h1 class="cover-heading">VR File Generator</h1>
-        <p class="lead">Welcome! Please select the type of file you'd like to create:</p>
+        <h1 class="cover-heading">Trial Data File Generator</h1>
+        <p class="lead">You can either create new scenes to use later or build an experiment data file from scenes you've already created. What would you like to do?</p>
         <p class="lead">
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <a href="./config.html" class="btn btn-lg btn-secondary fixed-width" id="config-btn">Config File</a>
-                <a href="./trial_data_file_options.html" class="btn btn-lg btn-secondary fixed-width">Trial Data File</a>
+                <a href="./new_scene_info.html" class="btn btn-lg btn-secondary fixed-width" style="font-size:19px;" id="create-scenes-btn">Create Scenes</a>
+                <a href="./create_data_file.html" class="btn btn-lg btn-secondary fixed-width" style="font-size:19px;" id="build-data-file-btn">Build Data File</a>
               </div>
             </div>
           </div>

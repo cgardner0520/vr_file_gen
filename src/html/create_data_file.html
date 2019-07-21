@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- MATERIAL ICONS-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- jQuery first, then jQuery min.js, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <!-- Custom Stylesheets -->
+    <link href="../assets/css/index.css" rel="stylesheet">
+    <link href="../assets/css/config.css" rel="stylesheet">
+
+    <!-- Custom Scripts -->
+    <script src="../js/loadScenes.js"></script>
+
+    <title>VR File Generator</title>
+  </head>
+  <!-- <body class="text-center" onload="loadScenes();"> -->
+  <body class="text-center" onload="loadScenes();">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <nav class="nav nav-masthead justfiy-content-center mx-auto">
+            <a class="nav-link" href="./index.html">Back</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <div class="container">
+          <div class="py-5 text-center">
+            <h2>Input File Generator</h2>
+            <p class="lead">
+              Select scenes in the appropriate order (or choose the 'Randomize Order' option) in order to create an input file for your experiment. Note that you must have already created all scenes using the 'Create Scenes' page in order to include them in the input file.
+            </p>
+          </div>
+        </div>
+
+<!--       <div class="card border-light text-white mb-3" style="max-width: 18rem; background-color: #333;">
+        <div class="card-body">
+          <h5 class="card-title">Available Scenes</h5>
+          <div class="list-group" style="max-height: 200px; overflow-y: auto;">
+            <button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;">Thing 1</button>
+            <button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;">Thing 2</button>
+            <button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;">Thing 3</button>
+            <button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;">Thing 4</button>
+            <button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;">Thing 5</button>            
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="card text-dark mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Available Scenes</h5>
+          <div class="list-group" style="max-height: 200px; overflow-y: auto;">
+            <button type="button" class="list-group-item list-group-item-action">Thing 1</button>
+            <button type="button" class="list-group-item list-group-item-action">Thing 2</button>
+            <button type="button" class="list-group-item list-group-item-action">Thing 3</button>
+            <button type="button" class="list-group-item list-group-item-action">Thing 4</button>
+            <button type="button" class="list-group-item list-group-item-action">Thing 5</button>            
+          </div>
+
+        </div>
+      </div>
+ -->
+
+      <div class="card-deck mb-5">
+        <div class="card border-light text-white" style="max-width: 18rem; background-color: #333;">
+          <div class="card-body">
+            <h5 class="card-title">Available Scenes</h5>
+            <div id="availableScenes" class="list-group" style="max-height: 250px; overflow-y: auto;">
+              <!-- <button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;">Thing 1</button>
+              <button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;">Thing 2</button>
+              <button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;">Thing 3</button>
+              <button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;">Thing 4</button>
+              <button type="button" class="list-group-item list-group-item-action" style="background-color: #333; color: white;">Thing 5</button> -->            
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="card border-light text-white" style="max-width: 18rem; background-color: #333;">
+          <div class="card-body">
+            <h5 class="card-title">Selected Scenes</h5>
+            <div id="selectedScenes" class="list-group" style="min-height: 200px; max-height: 200px; overflow-y: auto;">
+              <!-- <button type="button" class="list-group-item list-group-item-action">Thing 1</button>
+              <button type="button" class="list-group-item list-group-item-action">Thing 2</button>
+              <button type="button" class="list-group-item list-group-item-action">Thing 3</button>
+              <button type="button" class="list-group-item list-group-item-action">Thing 4</button>
+              <button type="button" class="list-group-item list-group-item-action">Thing 5</button> --> 
+              <!-- <li class="list-group-item" style="background-color: #333; color: white;">Thing?</li> -->
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-sm">Randomize Order</button>
+          </div>
+        </div>
+
+
+<!--         <div class="card text-dark" style="max-width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Available Scenes</h5>
+            <div class="list-group" style="max-height: 200px; overflow-y: auto;">
+              <button type="button" class="list-group-item list-group-item-action">Thing 1</button>
+              <button type="button" class="list-group-item list-group-item-action">Thing 2</button>
+              <button type="button" class="list-group-item list-group-item-action">Thing 3</button>
+              <button type="button" class="list-group-item list-group-item-action">Thing 4</button>
+              <button type="button" class="list-group-item list-group-item-action">Thing 5</button>            
+            </div>
+
+          </div>
+        </div>
+ -->
+
+      </div>
+
+
+<!--           <div class="container" id="sceneContainer">
+            <div class="container" id="existingScenes" style="width: 50%; float: left;">
+              <h3>Available Scenes</h3>
+            </div>
+ -->
+
+            <!-- <div class="card border-dark mb-3" style="max-width: 18rem;">
+              <div class="card-header">Header</div>
+              <div class="card-body text-dark">
+                <h5 class="card-title">Dark card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+ -->
+<!--             <div class="container" id="selectedScenes" style="width: 50%; float: right;">
+              <h3>Selected Scenes</h3>
+            </div>
+          </div>
+
+ -->
+<!--         <div class="container" id="existingScenes">
+        </div>
+
+        <div class="container" id="selectedScenes">
+          <h1>Selected Scenes</h1>
+        </div>
+
+        <div class="container">
+          <button name="showScenesBtn" class="btn btn-secondary" type="button" onclick="showScenes()">Show Selected Scenes</button>
+        </div>
+ -->
+
+        <div class="container mb-5">
+          <button class="btn btn-secondary">Create Input File</button>
+        </div>
+
+      </main>
+
+      <footer class="mastfoot mt-auto"></footer>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
