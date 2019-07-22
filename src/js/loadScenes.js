@@ -1,65 +1,27 @@
 // global variables
 var sceneList;	// list of scenes chosen for the experiment
+var sceneCounter;	// used to assign IDs to selected scenes; keeps counting up even if a scene is unselected
 
 // load the scene database
 var scenes = require('../js/db.js');
 
 function chooseScene(sceneNum) {
-
-
-
 	var selectedScenes = $('#selectedScenes');
 	scenes.find({sceneNum: sceneNum}, function(err, docs) {
 		for (i = 0; i < docs.length; i++) {
-			selectedScenes.append('<li class="list-group-item" style="background-color: #333; color: white;">' + docs[i].sceneName + '</li>');
+			// selectedScenes.append('<li class="list-group-item" style="background-color: #333; color: white;">' + docs[i].sceneName + '</li>');
+			selectedScenes.append('<button type="button" class="list-group-item" id="sceneBtn' + sceneCounter + '" style="background-color: #333; color: white;" onclick="removeScene(' + sceneCounter + ')">' + docs[i].sceneName + '</li>');
+			sceneCounter++;
+
 			sceneList = JSON.parse(localStorage.getItem("sceneList"));
 			sceneList.push(JSON.stringify(docs[i]));
 			localStorage.setItem("sceneList", JSON.stringify(sceneList));
 		}
-	});
-
-	// TODO: change find filter to be based on scene number 
-	// scenes.find({}, function(err, docs) {
-	// 	for (i = 0; i < docs.length; i++) {
-	// 		if (i === sceneNum) {
-	// 			// selectedScenes.append('<p>' + docs[sceneNum].sceneName + '<p>');
-	// 			selectedScenes.append('<li class="list-group-item" style="background-color: #333; color: white;">' + docs[sceneNum].sceneName + '</li>');
-
-	// 			// <li class="list-group-item" style="background-color: #333; color: white;">Thing?</li>
-				
-	// 			// add the scene to the global scene list
-				// sceneList = JSON.parse(localStorage.getItem("sceneList"));
-				// sceneList.push(JSON.stringify(docs[sceneNum]));
-				// localStorage.setItem("sceneList", JSON.stringify(sceneList));
-	// 		}
-	// 	}
-	// });
-
-	// scenes.find({sceneNum: sceneNum.toString()}).exec(function(err, docs) {
-	// 	selectedScenes.append('<li class="list-group-item" style="background-color: #333; color: white;">' + docs[sceneNum].sceneName + '</li>');
-	// 	sceneList = JSON.parse(localStorage.getItem("sceneList"));
-	// 	sceneList.push(JSON.stringify(docs[sceneNum]));
-	// 	localStorage.setItem("sceneList", JSON.stringify(sceneList));
-	// });
-	
+	});	
 }
 
 function loadScenes() {
-	// scenes.find({}, function(err, docs) {
-	// 	// create a button for all existing scenes
-	// 	for (i = 0; i < docs.length; i++) {
-	// 	// for (i = (docs.length - 1); i >= 0; i--) {
-	// 		// alert(docs[i].sceneName);
-	// 		// var existingScenes = $('#existingScenes');
-	// 		// existingScenes.append('<p><button name="scene' + docs[i].sceneName + '" class="btn btn-secondary" type="button" onclick="chooseScene(' + i + ')">' + docs[i].sceneName + '</button></p>');
-
-	// 		var availableScenes = $('#availableScenes');
-	// 		availableScenes.append('<button type="button" class="list-group-item list-group-item-action btn-select" style="background-color: #333; color: white;" onclick="chooseScene(' + i + ')">' + docs[i].sceneName + '</button>');
-
-	// 	}		
-	// });
-
-
+	sceneCounter = 0;
 
 	var availableScenes = $('#availableScenes');
 
@@ -74,10 +36,9 @@ function loadScenes() {
 	localStorage.setItem("sceneList", JSON.stringify(initSceneList));
 }
 
-function showScenes() {
-	var chosenScenes = localStorage.getItem("sceneList");
-	alert("CHOSEN SCENES");
-	alert(chosenScenes);
+function removeScene(idNum) {
+	var sceneId = '#sceneBtn' + idNum.toString();
+	$(sceneId).remove();
 }
 
 function randomizeSceneOrder() {
