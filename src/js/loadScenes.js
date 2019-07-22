@@ -10,7 +10,7 @@ function chooseScene(sceneNum) {
 	scenes.find({sceneNum: sceneNum}, function(err, docs) {
 		for (i = 0; i < docs.length; i++) {
 			// selectedScenes.append('<li class="list-group-item" style="background-color: #333; color: white;">' + docs[i].sceneName + '</li>');
-			selectedScenes.append('<button type="button" class="list-group-item" id="sceneBtn' + sceneCounter + '" style="background-color: #333; color: white;" onclick="removeScene(' + sceneCounter + ')">' + docs[i].sceneName + '</li>');
+			selectedScenes.append('<button type="button" class="list-group-item" id="sceneBtn' + sceneCounter + '" style="background-color: #333; color: white;" onclick="removeScene(' + sceneCounter + ', \'' + docs[i].sceneName + '\')">' + docs[i].sceneName + '</li>');
 			sceneCounter++;
 
 			sceneList = JSON.parse(localStorage.getItem("sceneList"));
@@ -36,9 +36,26 @@ function loadScenes() {
 	localStorage.setItem("sceneList", JSON.stringify(initSceneList));
 }
 
-function removeScene(idNum) {
+function removeScene(idNum, sceneName) {
 	var sceneId = '#sceneBtn' + idNum.toString();
 	$(sceneId).remove();
+
+	// for (i = 0; i < sceneList.length; i++) {
+	// 	alert("i: " + i + "\n" + sceneList[i]);
+	// }
+	alert('there are ' + sceneList.length + ' scenes');
+	for (i = sceneList.length - 1; i >= 0; i--) {
+		var curScene = JSON.parse(sceneList[i]);
+		if (curScene.sceneName === sceneName) {
+			sceneList.splice(i, 1);
+			alert('removt');
+			break;
+		}
+	}
+	alert('and now there are ' + sceneList.length + ' scenes');
+	for (i = 0; i < sceneList.length; i++) {
+		alert(JSON.parse(sceneList[i]).sceneName);
+	}
 }
 
 function randomizeSceneOrder() {
