@@ -37,28 +37,51 @@ function loadScenes() {
 }
 
 function removeScene(idNum, sceneName) {
+	// get rid of the scene from the UI
 	var sceneId = '#sceneBtn' + idNum.toString();
 	$(sceneId).remove();
 
-	// for (i = 0; i < sceneList.length; i++) {
-	// 	alert("i: " + i + "\n" + sceneList[i]);
-	// }
-	alert('there are ' + sceneList.length + ' scenes');
+	// remove the scene from the internal scene list
 	for (i = sceneList.length - 1; i >= 0; i--) {
 		var curScene = JSON.parse(sceneList[i]);
 		if (curScene.sceneName === sceneName) {
 			sceneList.splice(i, 1);
-			alert('removt');
 			break;
 		}
 	}
-	alert('and now there are ' + sceneList.length + ' scenes');
-	for (i = 0; i < sceneList.length; i++) {
-		alert(JSON.parse(sceneList[i]).sceneName);
+	alert(sceneListToString());
+}
+
+// this function implements the Durstenfeld shuffle (a computer-optimized version of the Fisher-Yates algorithm).
+// For more information about the randomness of the Fisher-Yates algorithm, see: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+function shuffleOrder() {
+	for (let i = sceneList.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[sceneList[i], sceneList[j]] = [sceneList[j], sceneList[i]];
 	}
 }
 
-function randomizeSceneOrder() {
-	// shuffle function ?
-	// also need to reset display when we randomize (rip)
+function randomizeScenes() {
+	// reorder the selected scenes
+	shuffleOrder();
+
+	// remove the old scene list from the display
+	var selectedScenes = $('#selectedScenes');
+	selectedScenes.empty();
+
+	// add the scenes in the new order
+	for (i = 0; i < sceneList.length; i++) {
+		curScene = JSON.parse(sceneList[i]);
+		selectedScenes.append('<button type="button" class="list-group-item" id="sceneBtn' + sceneCounter + '" style="background-color: #333; color: white;" onclick="removeScene(' + sceneCounter + ', \'' + curScene.sceneName + '\')">' + curScene.sceneName + '</li>');
+		sceneCounter++;
+	}
+	localStorage.setItem("sceneList", JSON.stringify(sceneList));
+}
+
+function sceneListToString() {
+	var sceneListStr = "";
+	for (i = 0; i < sceneList.length; i++) {
+		sceneListStr += JSON.parse(sceneList[i]).sceneName + "\n";
+	}
+	return sceneListStr;
 }
