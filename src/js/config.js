@@ -97,9 +97,7 @@ function writeJsonData(jsonData) {
 	var path = require('path');
 
 	// Save the file as "config.json" in the application's user data folder 
-	var filepath = path.join(app.getPath('userData'), "config.json");
-
-	alert('filepath:\n' + filepath);
+	var filepath = path.join(app.getPath('home'), "config.json");
 
 	fs.writeFileSync(filepath, jsonData, function(err) {
 		if (err) {

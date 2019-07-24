@@ -46,10 +46,10 @@ function removeScene(idNum, sceneName) {
 		var curScene = JSON.parse(sceneList[i]);
 		if (curScene.sceneName === sceneName) {
 			sceneList.splice(i, 1);
+			localStorage.setItem("sceneList", JSON.stringify(sceneList));
 			break;
 		}
 	}
-	alert(sceneListToString());
 }
 
 // this function implements the Durstenfeld shuffle (a computer-optimized version of the Fisher-Yates algorithm).
@@ -84,4 +84,39 @@ function sceneListToString() {
 		sceneListStr += JSON.parse(sceneList[i]).sceneName + "\n";
 	}
 	return sceneListStr;
+}
+
+function createInputFile() {
+	// format the trials properly
+	var trials = []
+	for (i = 0; i < sceneList.length; i++) {
+		var curScene = JSON.parse(sceneList[i]);
+		var trial = {
+			trialNum: (i + 1),
+			objects: curScene.objects
+		}
+		trials.push(trial);
+	}
+	
+	var input = {
+		trials: trials
+	};
+
+	var jsonInput = JSON.stringify(input, null, 4);
+
+	// file handling
+	var fs = require('fs');
+	const remote = require('electron').remote;
+	const app = remote.app;		// we need a reference to the app to find its path
+	var path = require('path');
+	var filename = "test.json";
+	var filepath = path.join(app.getPath('home'), filename);
+	
+	fs.writeFileSync(filepath, jsonInput, function(err) {
+		if (err) {
+			console.log(err);
+			alert(`ERROR: Could not save ${filename} to ${filepath}`);
+		}
+	});
+	alert("Success! File saved to " + filepath);
 }

@@ -25,7 +25,7 @@ function createWindow() {
 	win.loadFile('./src/html/index.html');
 
 	// Show dev tools (for debugging)
-	// win.webContents.openDevTools();
+	win.webContents.openDevTools();
 
 	win.once('ready-to-show', () => {
 		win.show();
