@@ -160,11 +160,19 @@
           <button name="showScenesBtn" class="btn btn-secondary" type="button" onclick="showScenes()">Show Selected Scenes</button>
         </div>
  -->
-
         <div class="container mb-5">
+          <div class="form-group text-center">
+            <h4>File Name</h4>
+            <div class="row input-group col-md-8 col-md-offset-4 mx-auto">
+              <input type="text" class="form-control" id="inputFileName" placeholder="input_file" aria-describedby="json-addon">
+              <div class="input-group-append">
+                <span class="input-group-text" id="json-addon">.json</span>
+              </div>
+            </div>
+          </div>
+
           <button class="btn btn-secondary" onclick="createInputFile()">Create Input File</button>
         </div>
-
       </main>
 
       <footer class="mastfoot mt-auto"></footer>

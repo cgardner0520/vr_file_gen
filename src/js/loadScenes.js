@@ -89,13 +89,17 @@ function sceneListToString() {
 function createInputFile() {
 	// format the trials properly
 	var trials = []
-	for (i = 0; i < sceneList.length; i++) {
-		var curScene = JSON.parse(sceneList[i]);
-		var trial = {
-			trialNum: (i + 1),
-			objects: curScene.objects
+
+	// need this if statement to prevent undefined errors
+	if (sceneList) {
+		for (i = 0; i < sceneList.length; i++) {
+			var curScene = JSON.parse(sceneList[i]);
+			var trial = {
+				trialNum: (i + 1),
+				objects: curScene.objects
+			}
+			trials.push(trial);
 		}
-		trials.push(trial);
 	}
 	
 	var input = {
@@ -109,7 +113,14 @@ function createInputFile() {
 	const remote = require('electron').remote;
 	const app = remote.app;		// we need a reference to the app to find its path
 	var path = require('path');
-	var filename = "test.json";
+	// var filename = "test.json";
+	
+
+	var filename = $('#inputFileName').val() + '.json';
+	if (filename.length < 1) {
+		filename = 'input_file.json';
+	}
+
 	var filepath = path.join(app.getPath('home'), filename);
 	
 	fs.writeFileSync(filepath, jsonInput, function(err) {
@@ -119,4 +130,5 @@ function createInputFile() {
 		}
 	});
 	alert("Success! File saved to " + filepath);
+
 }
