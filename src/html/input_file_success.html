@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- jQuery first, then jQuery min.js, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  <!-- include custom stylesheet -->
+  <link href="../assets/css/index.css" rel="stylesheet">
+
+  <!-- Include Custom Scripts -->
+  <script src="../js/inputSuccess.js"></script>
+
+  <title>VR File Builder</title>
+</head>
+<body class="text-center" onload="displaySuccessMsg()">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <!-- no actual header, but need it for spacing? -->
+      <header class="masthead mb-auto">
+      </header> 
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Success!</h1>
+        <div id="successMsg"></div>
+        <p class="lead">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <a href="./trial_data_file_options.html" class="btn btn-lg btn-secondary fixed-width" id="continueBtn">OK</a>
+              </div>
+            </div>
+          </div>
+        </p>
+      </main>
+
+      <!-- no actual footer but need for spacing? -->
+      <footer class="mastfoot mt-auto">
+      </footer>
+    </div>
+</body>
+</html>

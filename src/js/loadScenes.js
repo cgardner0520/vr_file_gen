@@ -116,9 +116,11 @@ function createInputFile() {
 	// var filename = "test.json";
 	
 
-	var filename = $('#inputFileName').val() + '.json';
+	var filename = $('#inputFileName').val();
 	if (filename.length < 1) {
 		filename = 'input_file.json';
+	} else {
+		filename = filename + '.json';
 	}
 
 	var filepath = path.join(app.getPath('home'), filename);
@@ -130,5 +132,6 @@ function createInputFile() {
 		}
 	});
 	alert("Success! File saved to " + filepath);
-
+	localStorage.setItem("inputFilepath", filepath);
+	window.location = "./input_file_success.html"
 }
