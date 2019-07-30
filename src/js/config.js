@@ -19,12 +19,13 @@ function createConfig() {
 	var initCameraZ = parseFloat($('#camZ').val());
 
 	// objMoveMode
-	var objMoveModeRadio = $('input[name=obj-move-radios]:checked').val();
-	if (objMoveModeRadio == 0) {
-		var objMoveMode = 0;
-	} else {
-		var objMoveMode = 1;
-	}
+	var objMoveMode = 1;
+	// var objMoveModeRadio = $('input[name=obj-move-radios]:checked').val();
+	// if (objMoveModeRadio == 0) {
+	// 	var objMoveMode = 0;
+	// } else {
+	// 	var objMoveMode = 1;
+	// }
 
 	// offsetObj
 	var offsetObjRadio = $('input[name=offset-obj-radios]:checked').val();

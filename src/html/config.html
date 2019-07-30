@@ -52,7 +52,7 @@
             <h4>Subject Information</h4>
             <div class="form-group text-left">
               <label for="subjNum" class="font-weight-bold">Subject Number</label>
-              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Testing tooltips" style="font-size:15px;">help_outline</i>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="The subject number should be a positive number reflecting the current subject undergoing the experiment. The number you enter here is just a placeholder to generate the initial config file and it must be manually changed between subjects so that the results files are correct." style="font-size:15px;">help_outline</i>
               <div class="row col-md-2">
                 <input type="number" class="form-control" id="subjNum" placeholder="1" value="1">
               </div>
@@ -60,6 +60,7 @@
 
             <div class="form-group text-left">
               <label for="subjSex" class="font-weight-bold">Subject Sex</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="The selected gender should correlate with the gender that subjects indicate on their questionnaires. The value you enter here is just a placeholder to generate the inital config file." style="font-size:15px;">help_outline</i>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="subj-sex-radios" id="male-radio" value="male-radio">
                 <label class="form-check-label" for="male-radio">0 - Male</label>
@@ -77,6 +78,7 @@
             <h4>Trial Input</h4>
             <div class="form-group text-left">
               <label for="dataFile" class="font-weight-bold">Trial Data File</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Enter the name of an existing file that defines the trials that will be shown to the subject during the experiment. Note that you do not need to include the '.json' suffix at the end of the file name." style="font-size:15px;">help_outline</i>
               <div class="row input-group col-md-8">
                 <input type="text" class="form-control" id="dataFile" placeholder="input_file" aria-describedby="json-addon">
                 <div class="input-group-append">
@@ -92,6 +94,7 @@
             <h4 class="mb-4">Camera and Object Positioning</h4>
             <div class="form-group text-left" id="initCamPos">
               <label for="initCamPos" class="font-weight-bold">Initial VIVE Camera Position</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="This field determines where the VIVE camera should be placed relative to the rest of the Unity world. The default value for this is [0,0,0] and likely does not need to be changed." style="font-size:15px;">help_outline</i>
               <div class="form-group form-row" id="initCamPos">
                 <div class="input-group col-md-3">
                   <div class="input-group-prepend">
@@ -113,8 +116,9 @@
                 </div>
               </div>
             </div>
-            <div class="form-group text-left">
+<!--             <div class="form-group text-left">
               <label for="objMoveMode" class="font-weight-bold">Object Move Mode</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="" style="font-size:15px;">help_outline</i>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="obj-move-radios" id="obj-move-0-radio" value="0">
                 <label class="form-check-label" for="obj-move-0-radio">0 - Object stops moving at the initial position of the VIVE Camera</label>
@@ -123,9 +127,10 @@
                 <input class="form-check-input" type="radio" name="obj-move-radios" id="obj-move-1-radio" value="1">
                 <label class="form-check-label" for="obj-move-1-radio">1 - Object stops moving at the specified final position for each trial</label>
               </div>
-            </div>
+            </div> -->
             <div class="form-group text-left">
               <label for="offsetObj" class="font-weight-bold">Offset Object</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="This determines whether the object ends centered in the camera screen or off-center so that the right edge of the object is centered once it stops moving. The value for the parameter should be true if the right edge should be centered and false if the midpoint of the object should be centered." style="font-size:15px;">help_outline</i>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="offset-obj-radios" id="offset-obj-true" value="offset-obj-true">
                 <label class="form-check-label" for="offset-obj-true">True</label>
@@ -143,6 +148,7 @@
             <h4 class="mb-4">Data Collection</h4>
             <div class="form-group text-left">
               <label for="headPosData" class="font-weight-bold">Collect Head Position Data</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Select true if you'd like to generate a file that records the head position of the subject at regular intervals throughout the experiment." style="font-size:15px;">help_outline</i>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="head-pos-radios" id="yes-head-pos-radio" value="yes-head-pos-radio">
                 <label class="form-check-label" for="yes-head-pos-radio">True</label>
@@ -160,6 +166,7 @@
             <h4 class="mb-4">Feedback</h4>
             <div class="form-group text-left">
               <label for="headPosData" class="font-weight-bold">Display Feedback</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Select true if you want subjects to see a short feedback message (“You responded x.xx seconds too fast/too slow” or “Perfect timing”) after using the controller to respond. If you select false, the subjects will see nothing in between trials." style="font-size:15px;">help_outline</i>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="show-feedback-radios" id="yes-feedback-radio" value=
               "yes-feedback-radio">
@@ -172,6 +179,7 @@
             </div>
             <div class="form-group text-left">
               <label for="feedbackColor" class="font-weight-bold">Feedback Color</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Choose any of the following colors for messages that will be displayed to subjects in between trials." style="font-size:15px;">help_outline</i>
               <div class="row col-md-3">
                 <select class="form-control" id="feedbackColor">
                   <option>Black</option>
@@ -189,30 +197,32 @@
             </div>
             <div class="form-group text-left">
               <label for="feedbackSize" class="font-weight-bold">Feedback Size</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="This determines the size of the feedback message shown to subjects. The default size is 75px." style="font-size:15px;">help_outline</i>
               <div class="row col-md-3">
                 <input type="number" class="form-control" id="feedbackSize" placeholder="75" step="0.01" value="75">
               </div>
             </div>
             <div class="form-group text-left">
               <label for="feedbackPos" class="font-weight-bold">Feedback Canvas Position</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="These coordinates determine the world location where messages will be displayed to the subject. The default coordinates are [0,6,100] but these can be adjusted based on the desired message position." style="font-size:15px;">help_outline</i>
               <div class="form-group form-row" id="feedbackPos">
                 <div class="input-group col-md-3">
                   <div class="input-group-prepend">
                     <div class="input-group-text">X:</div>
                   </div>
-                  <input type="number" step="0.001" class="form-control" id="feedbackX" placeholder="0" value="0.000">
+                  <input type="number" step="0.001" class="form-control" id="feedbackX" placeholder="0" value="0">
                 </div>
                 <div class="input-group col-md-3">
                   <div class="input-group-prepend">
                     <div class="input-group-text">Y:</div>
                   </div>
-                  <input type="number" step="0.001" class="form-control" id="feedbackY" placeholder="0" value="0.000">
+                  <input type="number" step="0.001" class="form-control" id="feedbackY" placeholder="6" value="6">
                 </div>
                 <div class="input-group col-md-3">
                   <div class="input-group-prepend">
                     <div class="input-group-text">Z:</div>
                   </div>
-                  <input type="number" step="0.001" class="form-control" id="feedbackZ" placeholder="0" value="0.000">
+                  <input type="number" step="0.001" class="form-control" id="feedbackZ" placeholder="100" value="100">
                 </div>
               </div>
             </div>
