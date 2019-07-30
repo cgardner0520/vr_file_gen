@@ -109,6 +109,11 @@ function addObj() {
 $(document).ready(function() {
 	getGlobalVars();
 
+	// Add tooltips
+	$('[data-toggle="tooltip"]').tooltip({
+		container: 'body'
+	});	
+
 	var objCreationHeader = $('#objCreationHeader');
 	objCreationHeader.append('<h2>Object ' + (objsCreated + 1) + ' </h2>');
 })

@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- MATERIAL ICONS-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -44,6 +48,7 @@
 
             <div class="form-group text-left">
               <label for="objType" class="font-weight-bold">Object Type</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Choose which type of object to present to subjects." style="font-size:15px;">help_outline</i>
               <div class="row col-md-3">
                 <select class="form-control" id="objType">
                   <option>Sphere</option>
@@ -54,6 +59,7 @@
 
             <div class="form-group text-left">
               <label for="objScale" class="font-weight-bold">Object Scale</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Enter the (x,y,z) coordinates to determine the size of the object that is being presented." style="font-size:15px;">help_outline</i>
               <div class="form-group form-row" id="objScale">
                 <div class="input-group col-md-3">
                   <div class="input-group-prepend">
@@ -77,8 +83,9 @@
             </div>
 
             <div class="form-group text-left">
-              <label for="objScale" class="font-weight-bold">Object Starting Position</label>
-              <div class="form-group form-row" id="objScale">
+              <label for="objStart" class="font-weight-bold">Object Starting Position</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Enter the (x,y,z) coordinates for the initial position of the object." style="font-size:15px;">help_outline</i>
+              <div class="form-group form-row" id="objStart">
                 <div class="input-group col-md-3">
                   <div class="input-group-prepend">
                     <div class="input-group-text">X:</div>
@@ -102,6 +109,7 @@
 
             <div class="form-group text-left">
               <label for="objScale" class="font-weight-bold">Object Ending Position</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Enter the (x,y,z) coordinates for the final position of the object." style="font-size:15px;">help_outline</i>
               <div class="form-group form-row" id="objScale">
                 <div class="input-group col-md-3">
                   <div class="input-group-prepend">
@@ -126,6 +134,7 @@
 
             <div class="form-group text-left">
               <label for="velocity" class="font-weight-bold">Object Velocity</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Enter the speed that the object should move (in Unity units/second)." style="font-size:15px;">help_outline</i>
               <div class="row input-group col-md-4">
                 <input type="number" class="form-control" id="velocity" placeholder="0" step="0.001" value="0" aria-describedby="vel-addon">
                 <div class="input-group-append">
@@ -136,6 +145,7 @@
 
             <div class="form-group text-left">
               <label for="timeVisible" class="font-weight-bold">Time Visible</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Enter the amount of time (in seconds) that the object should remain visible. If the object should be visible for the entire trial, this time should be the calculated TTC for the object (based on the object's distance from start to end). If the object should never disappear from the trial--even when the object has reached its final position--this value should be set to a negative number." style="font-size:15px;">help_outline</i>
               <div class="row input-group col-md-5">
                 <input type="number" class="form-control" id="timeVisible" placeholder="0" step="0.001" value="0" aria-describedby="vel-addon">
                 <div class="input-group-append">
@@ -146,6 +156,7 @@
 
             <div class="form-group text-left">
               <label for="rotation" class="font-weight-bold">Rate of Rotation</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Enter the speed (in Unity units/second) at which the object should rotate." style="font-size:15px;">help_outline</i>
               <div class="row input-group col-md-4">
                 <input type="number" class="form-control" id="rotation" placeholder="0" step="0.001" value="0" aria-describedby="vel-addon">
                 <div class="input-group-append">

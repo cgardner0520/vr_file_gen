@@ -25,3 +25,10 @@ function initScene() {
 
 	window.location = "../html/create_scene.html";
 }
+
+$(document).ready(function() {
+	// Add tooltips
+	$('[data-toggle="tooltip"]').tooltip({
+		container: 'body'
+	});
+});

@@ -26,12 +26,12 @@
 
     <title>VR File Generator</title>
   </head>
-  <body class="text-center">
+  <body class="text-center" onload="loadScenes();">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
           <nav class="nav nav-masthead justfiy-content-center mx-auto">
-            <a class="nav-link" href="./trial_data_file_options.html">Back</a>
+            <a class="nav-link" href="./index.html">Back</a>
           </nav>
         </div>
       </header>
@@ -52,12 +52,14 @@
             <h4>Initial Information</h4>
             <div class="form-group text-left">
               <label for="sceneName" class="font-weight-bold">Scene Name</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="Give this scene a name to save it under. If you use the same name as an already existing scene, that original scene will be overwritten by the new scene." style="font-size:15px;">help_outline</i>
               <div class="row col-md-6">
                 <input type="text" class="form-control" id="sceneName" placeholder="Scene 1">
               </div>
             </div>
             <div class="form-group text-left">
               <label for="numObjs" class="font-weight-bold">Number of Objects</label>
+              <i class="material-icons text-muted" data-toggle="tooltip" data-placement="right" title="There must be at least one object in the scene. On the following pages, you will specify the parameters for each object that you intend to create." style="font-size:15px;">help_outline</i>
               <div class="row input-group col-md-2">
                 <input type="number" class="form-control" id="numObjs" placeholder="1" value="1">
               </div>
@@ -76,24 +78,3 @@
     </div>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
