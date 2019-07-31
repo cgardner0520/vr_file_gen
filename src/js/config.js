@@ -108,7 +108,6 @@ function writeJsonData(jsonData) {
 	})
 }
 
-
 $(document).ready(function() {
 	// Add tooltips
 	$('[data-toggle="tooltip"]').tooltip({

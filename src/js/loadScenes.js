@@ -135,3 +135,10 @@ function createInputFile() {
 	localStorage.setItem("inputFilepath", filepath);
 	window.location = "./input_file_success.html"
 }
+
+$(document).ready(function() {
+	// Add tooltips
+	$('[data-toggle="tooltip"]').tooltip({
+		container: 'body'
+	});
+});
