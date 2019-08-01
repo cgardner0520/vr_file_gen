@@ -4,12 +4,16 @@
   "description": "A program to generate both config files and input files for the VR experiment framework developed for the DeLucia Lab at Rice University",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=false --out=release-builds",
+    "package-win": "electron-packager . input_file_gen --overwrite --platform=win32 --arch=ia32 --prune=false --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Input File Generator\"",    
+    "package-linux": "electron-packager . input_file_gen --overwrite --platform=linux --arch=x64 --prune=false --out=release-builds"    
   },
   "author": "Courtney Gardner",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^5.0.1"
+    "electron": "^5.0.1",
+    "electron-packager": "^14.0.4"
   },
   "dependencies": {
     "electron-reload": "^1.4.0",
